@@ -2,11 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Redirect from './demo/redirect'
 import reportWebVitals from './reportWebVitals';
+import CustomLink from './demo/customLink'
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CustomLink />
   </React.StrictMode>,
   document.getElementById('root')
 );

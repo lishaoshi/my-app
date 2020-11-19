@@ -41,6 +41,9 @@ const reactRefreshOverlayEntry = require.resolve(
   'react-dev-utils/refreshOverlayInterop'
 );
 
+const lessRegex = /\.(less)$/;
+const lessModuleRegex = /\.module\.(less)$/;  
+
 // Some apps do not need the benefits of saving a web request, so not inlining the chunk
 // makes for a smoother build process.
 const shouldInlineRuntimeChunk = process.env.INLINE_RUNTIME_CHUNK !== 'false';
@@ -325,6 +328,7 @@ module.exports = function (webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        '@': path.resolve(__dirname, '../src'),
         // Allows for better profiling with ReactDevTools
         ...(isEnvProductionProfile && {
           'react-dom$': 'react-dom/profiling',
@@ -448,6 +452,28 @@ module.exports = function (webpackEnv) {
                 sourceMaps: shouldUseSourceMap,
                 inputSourceMap: shouldUseSourceMap,
               },
+            },
+            {
+              test: lessRegex,
+              exclude: lessModuleRegex,
+              use: getStyleLoaders({ importLoaders: 3 }, 'less-loader'),          
+            },
+            {
+              test: lessModuleRegex,
+              use: getStyleLoaders(
+                 {
+                    importLoaders: 3,
+                    modules: true,
+                    getLocalIdent: getCSSModuleLocalIdent,
+                    modifyVars:{
+                      'primary-color': '#1DA57A',
+                      'link-color': '#1DA57A',  
+                      'border-radius-base': '2px',
+                    },
+                    javascriptEnabled: true,
+                },
+                   'less-loader'
+             ),
             },
             // "postcss" loader applies autoprefixer to our CSS.
             // "css" loader resolves paths in CSS and adds assets as dependencies.

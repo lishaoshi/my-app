@@ -1,94 +1,118 @@
-import logo from './logo.svg';
-// import './App.css';
-import { Button } from 'antd';
-import { HashRouter as Router, Route, Link, Switch, useRouteMatch, useParams, useLocation } from 'react-router-dom'
-import Demo1 from './demo/demo1'
+// // import './App.css';
+// import { Button } from 'antd';
+// import { HashRouter as Router, Route, Link, Switch, useRouteMatch, useParams, useLocation } from 'react-router-dom'
+// import Demo1 from './demo/demo1'
 
-function App() {
-  const handleClick = () => {
-    // let { path, url } = useRouteMatch();
-  }
-  return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
+// function App() {
+//   const handleClick = () => {
+//     // let { path, url } = useRouteMatch();
+//   }
+//   return (
+//     <Router>
+//       <div className="App">
+//         <header className="App-header">
           
-          <Link to="/">
-            <Button type="primary">Primary Button</Button>
-          </Link>
-          <Link to="/home">
-            <Button type="primary">Primary Button</Button>
-          </Link>
-          <Link to="/demo1">
-            <Button type="primary">demo1</Button>
-          </Link>
-        </header>
-      </div>
+//           <Link to="/">
+//             <Button type="primary">Primary Button</Button>
+//           </Link>
+//           <Link to="/home">
+//             <Button type="primary">Primary Button</Button>
+//           </Link>
+//           <Link to="/demo1">
+//             <Button type="primary">demo1</Button>
+//           </Link>
+//         </header>
+//       </div>
 
-      <Switch>
-        <Route exact path='/'>
-          <Home name={'hello home'}/>
-        </Route>
-        <Route path='/home'>
-          <Tipo />
-        </Route>
-        <Route path='/demo1'>
-          <Demo1 name={'my name is haha'}/>
-        </Route>
-      </Switch>
+//       <Switch>
+//         <Route exact path='/'>
+//           <Home name={'hello home'}/>
+//         </Route>
+//         <Route path='/home'>
+//           <Tipo />
+//         </Route>
+//         <Route path='/demo1'>
+//           <Demo1 name={'my name is haha'}/>
+//         </Route>
+//       </Switch>
       
-    </Router>
-  );
-}
+//     </Router>
+//   );
+// }
 
-function Home(prop) {
+// function Home(prop) {
 
-  console.log(prop.children)
-  return (
-    <div> 
-      this is {prop.name}
-    </div>
-  )
-}
+//   console.log(prop.children)
+//   return (
+//     <div> 
+//       this is {prop.name}
+//     </div>
+//   )
+// }
 
-function Tipo() {
-  let {url, path} = useRouteMatch();
-  console.log(url, path)
-  return (
-    <div> 
-      <h2>Topics</h2>
-      <ul>
-        <li>
-        <Link to={`${url}/child`}>子路由</Link>
-        </li>
-        <li>
-        <Link to={`${url}/other`}>其他路由</Link>
-        </li>
-      </ul>
-      <Switch>
-        <Route exact path={path}>
-          <h1>this is  child</h1>
-        </Route>
-        <Route exact path={`${path}/:other`}>
-          <ChildCom />
-        </Route>
+// function Tipo() {
+//   let {url, path} = useRouteMatch();
+//   console.log(url, path)
+//   return (
+//     <div> 
+//       <h2>Topics</h2>
+//       <ul>
+//         <li>
+//         <Link to={`${url}/child`}>子路由</Link>
+//         </li>
+//         <li>
+//         <Link to={`${url}/other`}>其他路由</Link>
+//         </li>
+//       </ul>
+//       <Switch>
+//         <Route exact path={path}>
+//           <h1>this is  child</h1>
+//         </Route>
+//         <Route exact path={`${path}/:other`}>
+//           <ChildCom />
+//         </Route>
+//         </Switch>
+//     </div>
+//   )
+// }
+
+// function ChildCom() {
+//   let { other } = useParams();
+//   let {url, path} = useRouteMatch();
+//   console.log(url, path)
+//   return (
+//     <div>{other}</div> 
+//   )
+// }
+
+// function NotFind() {
+//   return (
+//     <div>i not find data</div>
+//   )
+// }
+
+// export default App;
+
+import React from 'react'
+import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import Layout from '@/layout/layout'
+import UiButton from '@/views/UI/Button'
+
+function App (props) {
+  return(
+    <div>
+      <Router>
+        <Switch>
+          <Route path='/'>
+            <Layout>
+              <Route path="/ui/buttons">
+                <UiButton />
+              </Route>
+            </Layout>
+          </Route>
         </Switch>
+      </Router>
     </div>
-  )
-}
-
-function ChildCom() {
-  let { other } = useParams();
-  let {url, path} = useRouteMatch();
-  console.log(url, path)
-  return (
-    <div>{other}</div> 
-  )
-}
-
-function NotFind() {
-  return (
-    <div>i not find data</div>
   )
 }
 

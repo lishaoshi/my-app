@@ -94,15 +94,19 @@
 // export default App;
 
 import React from 'react'
-import { HashRouter as Router, Switch, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Layout from '@/layout/layout'
 import UiButton from '@/views/UI/Button'
+import Login from '@/views/Login'
 
 function App (props) {
   return(
     <div>
       <Router>
         <Switch>
+        <Route path='/login'>
+            <Login />
+          </Route>
           <Route path='/'>
             <Layout>
               <Route path="/ui/buttons">
@@ -110,6 +114,7 @@ function App (props) {
               </Route>
             </Layout>
           </Route>
+         
         </Switch>
       </Router>
     </div>

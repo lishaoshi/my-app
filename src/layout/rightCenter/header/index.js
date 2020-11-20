@@ -23,7 +23,7 @@ import './index.less'
 function menuDown(history) {
   function handleOut() {
     console.log('user sigle out')
-    history.push('/ui')
+    history.push('/login')
   }
   return (
       <Menu>

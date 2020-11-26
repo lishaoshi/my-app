@@ -2,7 +2,7 @@ import React from 'react'
 import './index.less'
 import MenuList from '../menu'
 import { Menu } from 'antd'
-import { Link, HashRouter as Router } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const { SubMenu, Item } = Menu;
 
 function SiderBar(props) {

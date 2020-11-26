@@ -1,7 +1,0 @@
-const routers = [
-  {
-    path: '',
-    component: '',
-    
-  }
-]

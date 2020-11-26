@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import Redirect from './demo/redirect'
 import reportWebVitals from './reportWebVitals';
-import CustomLink from './demo/customLink'
 import 'antd/dist/antd.css'
 import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import todoApp from './reducers'
+let store = createStore(todoApp)
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider>
+    <Provider store={store}>
       <App />
     </Provider>
   </React.StrictMode>,

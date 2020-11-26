@@ -98,6 +98,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import Layout from '@/layout/layout'
 import UiButton from '@/views/UI/Button'
 import Login from '@/views/Login'
+import Order from '@/views/order'
 
 function App (props) {
   return(
@@ -111,6 +112,9 @@ function App (props) {
             <Layout>
               <Route path="/ui/buttons">
                 <UiButton />
+              </Route>
+              <Route path="/order">
+                <Order></Order>
               </Route>
             </Layout>
           </Route>

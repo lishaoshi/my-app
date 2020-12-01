@@ -99,13 +99,15 @@ import Layout from '@/layout/layout'
 import UiButton from '@/views/UI/Button'
 import Login from '@/views/Login'
 import Order from '@/views/order'
+import AuthProvide from '@/utils/authProvide'
+
 
 function App (props) {
   return(
     <div>
       <Router>
         <Switch>
-        <Route path='/login'>
+          <Route path='/login'>
             <Login />
           </Route>
           <Route path='/'>

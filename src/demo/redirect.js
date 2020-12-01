@@ -163,8 +163,8 @@ function PrivateRoute({ children, ...rest }) {
   return (
     <Route
       {...rest}
-      render={({ location }) =>
-        auth.user ? (
+      render={({ location }) => {
+        return auth.user ?  (
           children
         ) : (
           <Redirect
@@ -174,6 +174,8 @@ function PrivateRoute({ children, ...rest }) {
             }}
           />
         )
+      }
+       
       }
     />
   );

@@ -456,23 +456,20 @@ module.exports = function (webpackEnv) {
             {
               test: lessRegex,
               exclude: lessModuleRegex,
-              use: getStyleLoaders({ importLoaders: 3 }, 'less-loader'),          
+              use: getStyleLoaders({ importLoaders: 3,  modules: true, sourceMap: isEnvProduction && shouldUseSourceMap }, 'less-loader'),
+              sideEffects: true,         
             },
             {
               test: lessModuleRegex,
               use: getStyleLoaders(
-                 {
-                    importLoaders: 3,
-                    modules: true,
+                {
+                  importLoaders: 3,
+                  sourceMap: isEnvProduction && shouldUseSourceMap,
+                  modules: {
                     getLocalIdent: getCSSModuleLocalIdent,
-                    modifyVars:{
-                      'primary-color': '#1DA57A',
-                      'link-color': '#1DA57A',  
-                      'border-radius-base': '2px',
-                    },
-                    javascriptEnabled: true,
+                  },
                 },
-                   'less-loader'
+                'less-loader'
              ),
             },
             // "postcss" loader applies autoprefixer to our CSS.

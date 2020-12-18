@@ -3,8 +3,7 @@ import SiderBar from '@/layout/SiderBar'
 import Header from '@/layout/rightCenter/header'
 import { Row, Col } from 'antd'
 
-import './layout.less'
-import Title from 'antd/lib/skeleton/Title'
+import style from'./layout.module.less'
 
 
 function Layout(props) {
@@ -18,9 +17,9 @@ function Layout(props) {
             <SiderBar />
           </Col>
           <Col span={21}>
-            <div className='right-warper'>
+            <div className={style.rightWarper}>
               <Header />
-              <div className='main-warper'>
+              <div className={style.mainWarper}>
                 { props.children }
               </div>
             </div>

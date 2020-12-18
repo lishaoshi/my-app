@@ -102,6 +102,7 @@ import Order from '@/views/order'
 import AuthProvide from '@/utils/authProvide'
 
 
+
 function App (props) {
   return(
     <div>
@@ -111,14 +112,17 @@ function App (props) {
             <Login />
           </Route>
           <Route path='/'>
-            <Layout>
-              <Route path="/ui/buttons">
-                <UiButton />
-              </Route>
-              <Route path="/order">
-                <Order></Order>
-              </Route>
-            </Layout>
+            <AuthProvide>
+              <Layout>
+                <Route path="/ui/buttons">
+                  <UiButton />
+                </Route>
+                <Route path="/order">
+                  <Order></Order>
+                </Route>
+              </Layout>
+            </AuthProvide>
+           
           </Route>
          
         </Switch>

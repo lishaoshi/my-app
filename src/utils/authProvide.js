@@ -1,23 +1,58 @@
 import React, { useEffect } from 'react'
-import { Route, useState, Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+// import { getInfo } from '@/reudx/action/index.js'
+import { useGetInfo } from '@/hook/customHook'
+import { getUserData } from '@/redux/action' 
 
-export default function AuthProvide({ children, reset}) {
-  return (
-    <Route
-    {...reset}
-    render={
-      ({ location }) =>{
-        return <Redirect
-          to={
-            {
-              pathname: "/login",
-              state: { from: location }
-            }
-          }
-          ></Redirect>
+const mapStateToProps = state => ({
+  userData: state.userData
+})
+
+const mapDispatchToProps = dispatch => (
+  {
+    getInfo: _ => dispatch(getUserData())
+  }
+)
+
+
+function AuthProvide({ children, ...reset}) {
+  const userData = reset.userData
+  useGetInfo(reset)
+  if (!userData.token) {
+
+    return <Redirect
+      to={
+        {
+          pathname: '/login'
+        }
       }
-    }
-    >
-    </Route>
+    ></Redirect>
+  }
+  
+
+  if (reset.location.pathname==='/') {
+    return (
+      <Redirect to={
+        {
+          pathname: '/ui/button'
+        }
+      }/>
+    )
+  }
+  return (
+    <div>
+      {
+        userData.token ? children : <Redirect
+              to={
+                {
+                  pathname: "/login",
+                }
+              }
+            />
+      }
+    </div>
   )
 }
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthProvide))

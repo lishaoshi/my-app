@@ -1,11 +1,15 @@
-import React from 'react'
+import Login from './loginUI.js'
+import { connect } from 'react-redux'
+import { userLogin } from '@/redux/action/index.js'
 
-function Login() {
-  return (
-    <div>
-      123
-    </div>
-  )
-}
+// import { useHistory } from 'react-router-dom'
 
-export default Login
+
+const mapStateToProps = state => ({})
+
+const mapDispatchToProps = dispatch => ({
+  userLogin: loginForm => dispatch(userLogin(loginForm))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

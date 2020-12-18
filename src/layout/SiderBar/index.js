@@ -1,5 +1,5 @@
 import React from 'react'
-import './index.less'
+import style from './index.module.less'
 import MenuList from '../menu'
 import { Menu } from 'antd'
 import { Link } from 'react-router-dom'
@@ -8,7 +8,7 @@ const { SubMenu, Item } = Menu;
 function SiderBar(props) {
 
   return (
-    <div className={'sider-bar_warper'}>
+    <div className={style.siderBarWarper}>
         <Menu theme="dark" mode="inline">
           { menuList(MenuList) }
         </Menu>

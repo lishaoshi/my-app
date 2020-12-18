@@ -1,0 +1,1 @@
+export const endpointUrl = 'http://cheetah-server.stag.yunbaoguan.cn/api'

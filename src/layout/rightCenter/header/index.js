@@ -2,7 +2,7 @@ import React from 'react'
 import { Menu, Dropdown } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 import { useHistory } from 'react-router-dom'
-import './index.less'
+import style from './index.module.less'
 
 // const menuDown = (
 //   <Menu>
@@ -47,8 +47,9 @@ function menuDown(history) {
 
 function Header (props) {
   let history = useHistory();
+  const classNames = `${style.header} ${style.warper} ${style.title}`
   return (
-    <div className='header warper title'>
+    <div className={classNames}>
       <Dropdown overlay={menuDown(history)} arrow>
         <span>
           李少师 { ' ' }

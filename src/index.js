@@ -5,10 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css'
 import { Provider } from 'react-redux'
-import Redirect from '@/demo/redirect.js'
-import { createStore } from 'redux'
-import todoApp from './reducers'
-let store = createStore(todoApp)
+import store from '@/redux/store'
 
 ReactDOM.render(
   <React.StrictMode>
